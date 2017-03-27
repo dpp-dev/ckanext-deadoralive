@@ -313,19 +313,19 @@ def broken_links_by_email(context, data_dict):
             continue
 
         if len(item["datasets_with_broken_links"]) == 1:
-            subject = u"You have a dataset with broken links on {site}"
+            subject = u"Jums ir datu kopa ar saluztu saiti {site}"
             subject = subject.format(site=pylons.config["ckan.site_title"])
-            body = u"This dataset contains a broken link:%0A%0A{title}%0A{url}"
+            body = u"Šai datu kopai ir salauzta saite:%0A%0A{title}%0A{url}"
             broken_dataset = item["datasets_with_broken_links"][0]
             url = pylons.config["ckan.site_url"] + toolkit.url_for(
                 controller="package", action="read", id=broken_dataset["name"])
             body = body.format(title=broken_dataset["title"], url=url)
 
         else:
-            subject = u"You have {n} datasets with broken links on {site}"
+            subject = u"Jums ir {n} datu kopa ar saluztu saiti {site}"
             subject = subject.format(n=len(item["datasets_with_broken_links"]),
                                      site=pylons.config["ckan.site_title"])
-            body = u"These datasets have broken links:"
+            body = u"Šim datu kopām ir salauztas saites:"
             for dataset in item["datasets_with_broken_links"]:
                 url = pylons.config["ckan.site_url"] + toolkit.url_for(
                     controller="package", action="read", id=dataset["name"])
