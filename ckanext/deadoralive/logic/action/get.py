@@ -131,14 +131,14 @@ def _broken_links_by_organization(context, organization_list, all_results,
     # Build the datasets with broken links by organization report.
     report = []
     for organization in organizations:
-
+        
         organization_report_item = {
             "name": organization["name"],
             "display_name": (organization.get("title")
                              or organization.get("name")),
             "image_display_url": organization["image_display_url"],
             "description": organization["description"],
-            "packages": organization["packages"],
+            #"packages": organization["packages"],
             "datasets_with_broken_links": []}
         num_broken_links = 0
 

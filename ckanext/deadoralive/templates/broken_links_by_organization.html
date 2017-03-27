@@ -5,17 +5,17 @@
   {% resource "deadoralive/styles/master.css" %}
 {% endblock %}
 
-{% block subtitle %}{{ _("Broken Links") }}{% endblock %}
+{% block subtitle %}{{ _("Nedarbīgās saites") }}{% endblock %}
 
 {% block breadcrumb_content %}
   <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
-  <li class="active"><a href="#">{{ _("Broken Links") }}</a></li>
+  <li class="active"><a href="#">{{ _("Nedarbīgās saites") }}</a></li>
 {% endblock %}
 
 {% block primary %}
   <article class="module">
     <div class="module-content">
-      <h1>{{ _("Organizations with broken links") }}</h1>
+      <h1>{{ _("Datu publicētāju nedarbīgās saites") }}</h1>
       {% if organizations %}
         <ul class="broken-links-list with-images unstyled">
           {% for organization in organizations %}
@@ -24,19 +24,19 @@
             <li class="item">
               <h3><a href="{{ org_url }}">{{ organization.display_name }}</a></h3>
               <img src="{{ org_image_url }}" class="image" width="100">
-              <p>{{ _("{0} has {1} broken links:").format(organization.display_name, organization.num_broken_links) }}</p>
+              <p>{{ _("{0} ir {1} nedarbīga(s) saite(s):").format(organization.display_name, organization.num_broken_links) }}</p>
               <ul>
                 {% for dataset in organization.datasets_with_broken_links %}
                   {% set url = h.url_for(controller="package", action="read",
                                          id=dataset.name) %}
-                  <li><a href="{{ url }}">{{ dataset.display_name }}</a> has {{ dataset.num_broken_links }} broken links</li>
+                  <li><a href="{{ url }}">{{ dataset.display_name }}</a> ir {{ dataset.num_broken_links }} nedarbīga(s) saite(s)</li>
                 {% endfor %}
               </ul>
             </li>
           {% endfor %}
         </ul>
       {% else %}
-        <p>{{ _("This site has no broken links") }}</p>
+        <p>{{ _("Nav nevienas nedarbīgas saites") }}</p>
       {% endif %}
     </div>
   </article>
